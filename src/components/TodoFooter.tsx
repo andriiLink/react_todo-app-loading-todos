@@ -1,16 +1,20 @@
-import { TodoNavigatoin } from "./TodoNavigation";
+import { TodoNavigatoin } from './TodoNavigation';
 
-import { Status } from "../types/StatusEnum";
-import React from "react";
-import { Todo } from "../types/Todo";
+import { Status } from '../types/StatusEnum';
+import React from 'react';
+import { Todo } from '../types/Todo';
 
 type Props = {
   status: Status;
-  completedTodos: Todo[],
+  completedTodos: Todo[];
   onSwitch: (status: Status) => void;
 };
 
-export const TodoFooter: React.FC<Props> = ({ status, completedTodos, onSwitch }) => {
+export const TodoFooter: React.FC<Props> = ({
+  status,
+  completedTodos,
+  onSwitch,
+}) => {
   return (
     <footer className="todoapp__footer" data-cy="Footer">
       <span className="todo-count" data-cy="TodosCounter">

@@ -37,9 +37,11 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (errorType !== null) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setErrorType(null);
       }, 3000);
+
+      return () => clearTimeout(timer);
     }
   }, [errorType]);
 
