@@ -5,10 +5,13 @@ import { Todo } from '../types/Todo';
 
 type Props = {
   visibleTodos: Todo[];
-  loader: boolean;
+  isLoading: boolean;
 };
 
-export const TodoMain: React.FC<Props> = ({ visibleTodos, loader }) => {
+export const TodoMain: React.FC<Props> = ({
+  visibleTodos,
+  isLoading: loader,
+}) => {
   return (
     <section className="todoapp__main" data-cy="TodoList">
       {!loader &&

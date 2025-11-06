@@ -6,19 +6,19 @@ import { Todo } from '../types/Todo';
 
 type Props = {
   status: Status;
-  completedTodos: Todo[];
+  activeTodos: Todo[];
   onSwitch: (status: Status) => void;
 };
 
 export const TodoFooter: React.FC<Props> = ({
   status,
-  completedTodos,
+  activeTodos,
   onSwitch,
 }) => {
   return (
     <footer className="todoapp__footer" data-cy="Footer">
       <span className="todo-count" data-cy="TodosCounter">
-        {completedTodos.length} items left
+        {activeTodos.length} items left
       </span>
 
       {/* Active link should have the 'selected' class */}

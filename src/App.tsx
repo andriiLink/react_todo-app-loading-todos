@@ -13,7 +13,7 @@ import { ErrorType } from './types/ErrorEnum';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [loader, setLoader] = useState(false);
+  const [isLoading, setLoader] = useState(false);
   const [status, setStatus] = useState(Status.All);
   const [errorType, setErrorType] = useState<ErrorType | null>(null);
 
@@ -43,6 +43,8 @@ export const App: React.FC = () => {
 
       return () => clearTimeout(timer);
     }
+
+    return;
   }, [errorType]);
 
   if (!USER_ID) {
@@ -79,7 +81,7 @@ export const App: React.FC = () => {
   };
 
   const visibleTodos: Todo[] = getPreparedTodos(todos, status);
-  const completedTodos = todos.filter(todo => todo.completed === false);
+  const activeTodos = todos.filter(todo => todo.completed === false);
 
   return (
     <div className="todoapp">
@@ -87,13 +89,13 @@ export const App: React.FC = () => {
 
       <div className="todoapp__content">
         <TodoHeader todos={todos} />
-        <TodoMain visibleTodos={visibleTodos} loader={loader} />
+        <TodoMain visibleTodos={visibleTodos} isLoading={isLoading} />
 
         {/* Hide the footer if there are no todos */}
         {todos.length !== 0 && (
           <TodoFooter
             status={status}
-            completedTodos={completedTodos}
+            activeTodos={activeTodos}
             onSwitch={handleSwitchStatus}
           />
         )}
