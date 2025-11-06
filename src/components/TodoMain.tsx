@@ -10,11 +10,11 @@ type Props = {
 
 export const TodoMain: React.FC<Props> = ({
   visibleTodos,
-  isLoading: loader,
+  isLoading,
 }) => {
   return (
     <section className="todoapp__main" data-cy="TodoList">
-      {!loader &&
+      {!isLoading &&
         visibleTodos.map(todo => {
           return (
             <div
